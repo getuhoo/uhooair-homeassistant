@@ -24,7 +24,7 @@ async def async_setup_entry(hass: core.HomeAssistant, config_entry: ConfigType, 
     sensors = []
     for serial_number in coordinator.data:
         for sensor in SENSOR_TYPES:
-            sensors.append()
+            sensors.append(UhooSensorEntity(sensor, serial_number, coordinator))
 
     async_add_entities(sensors, False)
 
