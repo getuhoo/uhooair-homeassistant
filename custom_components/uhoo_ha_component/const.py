@@ -30,15 +30,15 @@ UPDATE_INTERVAL = timedelta(seconds=600)
 
 PLATFORMS = ["sensor"]
 
-API_VIRUS = "virusIndex"
-API_MOLD = "moldIndex"
+API_VIRUS = "virus_index"
+API_MOLD = "mold_index"
 API_TEMP = "temperature"
 API_HUMIDITY = "humidity"
 API_PM25 = "pm25"
 API_TVOC = "tvoc"
 API_CO2 = "co2"
 API_CO = "co"
-API_PRESSURE = "airPressure"
+API_PRESSURE = "air_pressure"
 API_OZONE = "ozone"
 API_NO2 = "no2"
 API_PM1 = "pm1"
