@@ -1,0 +1,15 @@
+{
+  "codeowners": [
+    "@joshsmonta"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/joshsmonta/uhoo-ha-component",
+  "domain": "uhoo-ha-component",
+  "iot_class": "cloud_polling",
+  "name": "uhoo-ha-component",
+  "requirements": [
+    "aiohttp"
+  ],
+  "version": "1.0.0"
+}
