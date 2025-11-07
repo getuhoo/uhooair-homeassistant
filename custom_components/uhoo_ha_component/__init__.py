@@ -76,8 +76,9 @@ class UhooDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self) -> Dict[str, Device]:
         # @TODO: Add Device Model and think of way to set multiple devices from list
         try:
-            first_key = next(iter(self.client._devices))
-            await self.client.get_latest_data(self.client._devices[first_key])
+            first_key = next(iter(self.client._devices), None)
+            if first_key is not None:
+                await self.client.get_latest_data(first_key)
             return self.client.get_devices()
         except Exception as exception:
             LOGGER.error(
