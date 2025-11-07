@@ -65,8 +65,13 @@ class API(object):
     def set_bearer_token(self, bearer_token: Optional[str]) -> None:
         self._bearer_token = bearer_token
 
-    async def generate_token(self) -> dict:
-        resp: dict = await self._request("get", API_URL_BASE, GENERATE_TOKEN)
+    async def generate_token(self, api_key: str) -> dict:
+        resp: dict = await self._request(
+            "post", 
+            API_URL_BASE, 
+            GENERATE_TOKEN,
+            data={"code": api_key}
+        )
         return resp
 
     async def get_device_data(self, serial_number: str, mode: str, limit: int) -> dict:

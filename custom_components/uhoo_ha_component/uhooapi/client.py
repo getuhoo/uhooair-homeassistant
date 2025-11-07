@@ -32,7 +32,7 @@ class Client(object):
         self._api: API = API(self._websession)
 
     async def login(self) -> None:
-        user_token: dict = await self._api.generate_token()
+        user_token: dict = await self._api.generate_token(self._api_key)
         self._log.debug(f"[generate_token] returned\n{json_pp(user_token)}")
         self._access_token = user_token["access_token"]
         self._refresh_token = user_token["refresh_token"]
