@@ -26,7 +26,7 @@ MANUFACTURER = "uHoo, Inc."
 VERSION = "1.0.0"
 ISSUE_URL = "https://github.com/joshsmonta/uhoo-ha-component/issues"
 
-UPDATE_INTERVAL = timedelta(seconds=600)
+UPDATE_INTERVAL = timedelta(seconds=900)
 
 PLATFORMS = ["sensor"]
 
