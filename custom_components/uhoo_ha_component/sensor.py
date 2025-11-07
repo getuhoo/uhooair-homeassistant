@@ -10,6 +10,7 @@ from .const import (
     ATTR_ICON,
     MANUFACTURER,
     ATTR_UNIT_OF_MEASUREMENT,
+    ATTR_UNIQUE_ID,
     API_TEMP,
     MODEL,
     UnitOfTemperature
