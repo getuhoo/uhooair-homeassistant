@@ -61,7 +61,7 @@ class UhooFlowHandler(ConfigFlow, domain=DOMAIN):
         """Return true if credentials is valid."""
         try:
             session = async_create_clientsession(self.hass)
-            client = Client(api_key, session)
+            client = Client(api_key, session, debug=True)
             await client.login()
             return True
         except UnauthorizedError as err:

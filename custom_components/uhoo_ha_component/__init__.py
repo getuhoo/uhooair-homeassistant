@@ -29,7 +29,7 @@ async def async_setup_entry(hass: core.HomeAssistant, config_entry: ConfigEntry)
     session = async_get_clientsession(hass)
 
     try:
-        client = Client(api_key, session)
+        client = Client(api_key, session, debug=True)
         await client.login()
         await client.setup_devices()
     except UnauthorizedError as err:
