@@ -5,9 +5,9 @@
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/joshsmonta/uhoo-ha-component",
-  "domain": "uhoo-ha-component",
+  "domain": "uhoo_ha_component",
   "iot_class": "cloud_polling",
-  "name": "uhoo-ha-component",
+  "name": "uhoo_ha_component",
   "requirements": [
     "aiohttp"
   ],
