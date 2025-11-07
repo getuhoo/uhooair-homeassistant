@@ -23,7 +23,6 @@ APP_VERSION: int = 1
 NAME = "uHoo Integration"
 MODEL = "uHoo Indoor Air Monitor"
 MANUFACTURER = "uHoo, Inc."
-DOMAIN = "uhoo, Inc."
 VERSION = "1.0.0"
 ISSUE_URL = "https://github.com/joshsmonta/uhoo-ha-component/issues"
 
