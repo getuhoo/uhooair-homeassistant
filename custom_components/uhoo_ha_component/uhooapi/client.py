@@ -26,7 +26,7 @@ class Client(object):
         self._mac_address: Optional[str] = None
         self._serial_number: Optional[str] = None
         self._mode: str = "minute"
-        self._limit: int = 15
+        self._limit: int = 5
         self._devices: Dict[str, Device] = {}
 
         self._api: API = API(self._websession)
@@ -65,7 +65,6 @@ class Client(object):
                 self._devices[serial_number] = Device(device)
 
     async def get_latest_data(self, serial_number: str) -> None:
-        # @TODO: 
         try: 
             data_latest: dict = await self._api.get_device_data(serial_number, self._mode, self._limit)
         except UnauthorizedError:

@@ -7,7 +7,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import DOMAIN, LOGGER, STARTUP_MESSAGE, UPDATE_INTERVAL,PLATFORMS
+from .const import DOMAIN, LOGGER, STARTUP_MESSAGE, UPDATE_INTERVAL, PLATFORMS
 from .uhooapi.errors import UnauthorizedError, UhooError
 from .uhooapi.client import Client
 from .uhooapi.device import Device
@@ -74,11 +74,8 @@ class UhooDataUpdateCoordinator(DataUpdateCoordinator):
         super().__init__(hass, LOGGER, name=DOMAIN, update_interval=UPDATE_INTERVAL)
 
     async def _async_update_data(self) -> Dict[str, Device]:
-        # @TODO: Add Device Model and think of way to set multiple devices from list
         try:
-            # first_key = next(iter(self.client._devices), None)
-            # if first_key is not None:
-            #     await self.client.get_latest_data(first_key)
+            await self.client.login()
             if self.client._devices:
                 await asyncio.gather(*[
                     self.client.get_latest_data(device_id)

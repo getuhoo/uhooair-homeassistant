@@ -26,7 +26,7 @@ MANUFACTURER = "uHoo, Inc."
 VERSION = "1.0.0"
 ISSUE_URL = "https://github.com/joshsmonta/uhoo-ha-component/issues"
 
-UPDATE_INTERVAL = timedelta(seconds=900)
+UPDATE_INTERVAL = timedelta(seconds=300)
 
 PLATFORMS = ["sensor"]
 
@@ -128,7 +128,7 @@ SENSOR_TYPES = {
     },
     API_MOLD: {
         ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:fungus",
+        ATTR_ICON: "mdi:mushroom",
         ATTR_UNIT_OF_MEASUREMENT: None,
         ATTR_LABEL: "Mold index",
         ATTR_UNIQUE_ID: API_MOLD,
