@@ -36,6 +36,8 @@ class API(object):
         async with self._websession.request(
             method, f"{scaffold}/{endpoint}", headers=headers, data=data
         ) as resp:
+            json = None
+            text = None
             try:
                 self._log.debug(
                     f"[_request] {resp.status} {method} {scaffold}/{endpoint}"
