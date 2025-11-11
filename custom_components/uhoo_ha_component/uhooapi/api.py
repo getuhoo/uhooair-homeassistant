@@ -48,11 +48,11 @@ class API(object):
                 return json
             except ClientResponseError as err:
                 if err.status == 401:
-                    self._log.debug(f"[_request] 401 Unauthorized:\n{json_pp(json)}")
+                    self._log.debug(f"[_request] 401 Unauthorized:\n{json_pp(json) or text}")
                     raise UnauthorizedError(json_pp(json)) from None
                 elif err.status == 403:
-                    self._log.debug(f"[_request] 403 Unauthorized:\n{text}")
-                    raise ForbiddenError(text) from None
+                    self._log.debug(f"[_request] 403 Unauthorized:\n{text or json_pp(json)}")
+                    raise ForbiddenError(text or json) from None
                 else:
                     raise RequestError(
                         f"Error requesting data from {scaffold}/{endpoint}: {err}"
