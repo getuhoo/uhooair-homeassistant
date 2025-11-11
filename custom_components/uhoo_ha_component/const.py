@@ -77,27 +77,6 @@ SENSOR_TYPES = {
         ATTR_LABEL: "PM2.5",
         ATTR_UNIQUE_ID: API_PM25,
     },
-    API_PM1: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:blur",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-        ATTR_LABEL: "PM1.0",
-        ATTR_UNIQUE_ID: API_PM1,
-    },
-    API_PM4: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:blur",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-        ATTR_LABEL: "PM4.0",
-        ATTR_UNIQUE_ID: API_PM4,
-    },
-    API_PM10: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:blur",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-        ATTR_LABEL: "PM10",
-        ATTR_UNIQUE_ID: API_PM10,
-    },
     API_HUMIDITY: {
         ATTR_DEVICE_CLASS: SensorDeviceClass.HUMIDITY,
         ATTR_ICON: "mdi:water-percent",
@@ -140,6 +119,23 @@ SENSOR_TYPES = {
         ATTR_LABEL: "Ozone",
         ATTR_UNIQUE_ID: API_OZONE,
     },
+    API_VIRUS: {
+        ATTR_DEVICE_CLASS: None,
+        ATTR_ICON: "mdi:biohazard",
+        ATTR_UNIT_OF_MEASUREMENT: None,
+        ATTR_LABEL: "Virus index",
+        ATTR_UNIQUE_ID: API_VIRUS,
+    },
+    API_MOLD: {
+        ATTR_DEVICE_CLASS: None,
+        ATTR_ICON: "mdi:fungus",
+        ATTR_UNIT_OF_MEASUREMENT: None,
+        ATTR_LABEL: "Mold index",
+        ATTR_UNIQUE_ID: API_MOLD,
+    },
+}
+
+AURA_SENSORS = {
     API_CH2O: {
         ATTR_DEVICE_CLASS: None,
         ATTR_ICON: "mdi:chemical-weapon",
@@ -196,19 +192,26 @@ SENSOR_TYPES = {
         ATTR_LABEL: "Oxygen",
         ATTR_UNIQUE_ID: API_OXYGEN,
     },
-    API_VIRUS: {
+    API_PM1: {
         ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:biohazard",
-        ATTR_UNIT_OF_MEASUREMENT: None,
-        ATTR_LABEL: "Virus index",
-        ATTR_UNIQUE_ID: API_VIRUS,
+        ATTR_ICON: "mdi:blur",
+        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        ATTR_LABEL: "PM1.0",
+        ATTR_UNIQUE_ID: API_PM1,
     },
-    API_MOLD: {
+    API_PM4: {
         ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:fungus",
-        ATTR_UNIT_OF_MEASUREMENT: None,
-        ATTR_LABEL: "Mold index",
-        ATTR_UNIQUE_ID: API_MOLD,
+        ATTR_ICON: "mdi:blur",
+        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        ATTR_LABEL: "PM4.0",
+        ATTR_UNIQUE_ID: API_PM4,
+    },
+    API_PM10: {
+        ATTR_DEVICE_CLASS: None,
+        ATTR_ICON: "mdi:blur",
+        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        ATTR_LABEL: "PM10",
+        ATTR_UNIQUE_ID: API_PM10,
     },
 }
 
