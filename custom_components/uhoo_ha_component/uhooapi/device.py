@@ -66,7 +66,7 @@ class Device(object):
         # Assign averages to class attributes
         for field in self.SENSOR_FIELDS:
             avg = sums[field] / n
-            setattr(self, self._to_attr_name(field), round(avg))
+            setattr(self, self._to_attr_name(field), round(avg, 1))
 
         # Optionally use the latest timestamp
         self.timestamp = data_points[-1].get("timestamp", -1)
