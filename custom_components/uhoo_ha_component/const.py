@@ -71,7 +71,7 @@ SENSOR_TYPES = {
         ATTR_UNIQUE_ID: API_CO2,
     },
     API_PM25: {
-        ATTR_DEVICE_CLASS: None,  # DEVICE_CLASS_PM25 once supported
+        ATTR_DEVICE_CLASS: SensorDeviceClass.PM25,  # DEVICE_CLASS_PM25 once supported
         ATTR_ICON: "mdi:blur",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
         ATTR_LABEL: "PM2.5",
@@ -99,37 +99,37 @@ SENSOR_TYPES = {
         ATTR_UNIQUE_ID: API_PRESSURE,
     },
     API_TVOC: {
-        ATTR_DEVICE_CLASS: None,  # DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS once supported
+        ATTR_DEVICE_CLASS: SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS,  # DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS once supported
         ATTR_ICON: "mdi:cloud",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
         ATTR_LABEL: "Total volatile organic compounds",
         ATTR_UNIQUE_ID: API_TVOC,
     },
     API_NO2: {
-        ATTR_DEVICE_CLASS: None,  # DEVICE_CLASS_NITROGEN_DIOXIDE once supported
+        ATTR_DEVICE_CLASS: SensorDeviceClass.NITROGEN_DIOXIDE,  # DEVICE_CLASS_NITROGEN_DIOXIDE once supported
         ATTR_ICON: "mdi:cloud",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
         ATTR_LABEL: "Nitrogen dioxide",
         ATTR_UNIQUE_ID: API_NO2,
     },
     API_OZONE: {
-        ATTR_DEVICE_CLASS: None,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.OZONE,
         ATTR_ICON: "mdi:cloud",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
         ATTR_LABEL: "Ozone",
         ATTR_UNIQUE_ID: API_OZONE,
     },
     API_VIRUS: {
-        ATTR_DEVICE_CLASS: None,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.AQI,
         ATTR_ICON: "mdi:biohazard",
-        ATTR_UNIT_OF_MEASUREMENT: None,
+        ATTR_UNIT_OF_MEASUREMENT: "",
         ATTR_LABEL: "Virus index",
         ATTR_UNIQUE_ID: API_VIRUS,
     },
     API_MOLD: {
-        ATTR_DEVICE_CLASS: None,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.AQI,
         ATTR_ICON: "mdi:mushroom",
-        ATTR_UNIT_OF_MEASUREMENT: None,
+        ATTR_UNIT_OF_MEASUREMENT: "",
         ATTR_LABEL: "Mold index",
         ATTR_UNIQUE_ID: API_MOLD,
     },
