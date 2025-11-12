@@ -75,7 +75,7 @@ class UhooDataUpdateCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self) -> Dict[str, Device]:
         try:
-            await self.client.login()
+            # await self.client.login()
             if self.client._devices:
                 await asyncio.gather(*[
                     self.client.get_latest_data(device_id)
