@@ -1,3 +1,6 @@
+import json
+from ..const import LOGGER
+
 class Device(object):
     SENSOR_FIELDS = [
         "virusIndex", 
@@ -45,11 +48,7 @@ class Device(object):
         self.utc_offset = device.get("utcOffset", "")
         self.ssid = device.get("ssid", "")
 
-    def update_data(self, data_points: dict) -> None:
-        """
-        Update device with averaged sensor values from a list of data points.
-        Expected input: {"data": [ {<sensor fields>}, {...}, ... ]}
-        """
+    def update_data(self, data_points: list) -> None:
         if not data_points:
             return  # No data to process
 

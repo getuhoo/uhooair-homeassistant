@@ -48,6 +48,11 @@ def bypass_login_fixture():
     with patch("custom_components.uhoo_ha_component.Client.login"):
         yield
 
+@pytest.fixture(name="bypass_setup_devices")
+def bypass_setup_devices_fixture():
+    with patch("custom_components.uhoo_ha_component.Client.setup_devices"):
+        yield
+
 
 @pytest.fixture(name="error_on_login")
 def error_login_fixture():

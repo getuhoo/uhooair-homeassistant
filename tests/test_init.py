@@ -18,7 +18,7 @@ async def test_setup_no_config(hass):
 
 
 async def test_async_setup_entry(
-    hass, bypass_login, bypass_get_latest_data, bypass_get_devices
+    hass, bypass_login, bypass_get_latest_data, bypass_get_devices, bypass_setup_devices
 ):
     """Test a successful setup entry."""
 
@@ -46,7 +46,7 @@ async def test_async_setup_entry_exception(hass, error_on_login):
 
 
 async def test_unload_entry(
-    hass, bypass_login, bypass_get_latest_data, bypass_get_devices
+    hass, bypass_login, bypass_get_latest_data, bypass_get_devices, bypass_setup_devices
 ):
     """Test successful unload of entry."""
 
