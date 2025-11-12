@@ -1,10 +1,10 @@
 """Constants for uhoo tests."""
 from typing import Any, Dict
 
-from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
+from homeassistant.const import CONF_PASSWORD, CONF_USERNAME, CONF_API_KEY
 
 # Mock config data to be used across multiple tests
-MOCK_CONFIG = {CONF_USERNAME: "test@example.com", CONF_PASSWORD: "test_password"}
+MOCK_CONFIG: dict = { CONF_API_KEY: "tes1232421232" }
 
 MOCK_DEVICE: Dict[str, Any] = {
     "calibration": 3,
