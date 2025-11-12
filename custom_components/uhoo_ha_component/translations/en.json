@@ -1,0 +1,18 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Enter Generated API KEY from uHoo Web App.",
+                "data": {
+                    "api_key": "API KEY"
+                }
+            }
+        },
+        "error": {
+            "auth": "Invalid uHoo credentials provided."
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single instance is allowed."
+        }
+    }
+}

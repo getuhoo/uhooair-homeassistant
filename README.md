@@ -1,3 +1,3 @@
-# uhoo-ha-component for Home Assistant
+# uHoo Integration for Home Assistant
 
 ## Installation
