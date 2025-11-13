@@ -3,3 +3,4 @@ pytest-cov
 pytest-homeassistant-custom-component
 voluptuous
 pre-commit
+black

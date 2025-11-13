@@ -18,7 +18,10 @@ async def async_setup(hass: core.HomeAssistant, config: dict) -> bool:
     # @TODO: Add setup code.
     return True
 
-async def async_setup_entry(hass: core.HomeAssistant, config_entry: ConfigEntry) -> bool:
+
+async def async_setup_entry(
+    hass: core.HomeAssistant, config_entry: ConfigEntry
+) -> bool:
     """Set up uHoo integration from a config entry."""
     if hass.data.get(DOMAIN) is None:
         hass.data.setdefault(DOMAIN, {})
@@ -48,15 +51,20 @@ async def async_setup_entry(hass: core.HomeAssistant, config_entry: ConfigEntry)
     await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
     return True
 
-async def async_unload_entry(hass: core.HomeAssistant, config_entry: ConfigEntry) -> bool:
+
+async def async_unload_entry(
+    hass: core.HomeAssistant, config_entry: ConfigEntry
+) -> bool:
     """Handle removal of an entry"""
-    coordinator=hass.data[DOMAIN][config_entry.entry_id]
+    coordinator = hass.data[DOMAIN][config_entry.entry_id]
     unloaded = all(
-        await asyncio.gather(*(
-            hass.config_entries.async_forward_entry_unload(config_entry, platform)
-            for platform in PLATFORMS
-            if platform in coordinator.platforms
-        ))
+        await asyncio.gather(
+            *(
+                hass.config_entries.async_forward_entry_unload(config_entry, platform)
+                for platform in PLATFORMS
+                if platform in coordinator.platforms
+            )
+        )
     )
     await hass.async_block_till_done()
 
@@ -64,8 +72,10 @@ async def async_unload_entry(hass: core.HomeAssistant, config_entry: ConfigEntry
         hass.data[DOMAIN].pop(config_entry.entry_id)
     return unloaded
 
+
 class UhooDataUpdateCoordinator(DataUpdateCoordinator):
     """Class to manage fetching data from the uHoo API."""
+
     def __init__(self, hass: core.HomeAssistant, client: Client) -> None:
         self.client = client
         self.platforms: List[str] = []
@@ -77,10 +87,12 @@ class UhooDataUpdateCoordinator(DataUpdateCoordinator):
         try:
             await self.client.login()
             if self.client._devices:
-                await asyncio.gather(*[
-                    self.client.get_latest_data(device_id)
-                    for device_id in self.client._devices
-                ])
+                await asyncio.gather(
+                    *[
+                        self.client.get_latest_data(device_id)
+                        for device_id in self.client._devices
+                    ]
+                )
             return self.client.get_devices()
         except Exception as exception:
             LOGGER.error(

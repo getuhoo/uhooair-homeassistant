@@ -1,5 +1,4 @@
 import logging
-import uuid
 from aiohttp import ClientSession
 from typing import Dict, Optional
 from ..const import LOGGER, APP_VERSION
@@ -8,15 +7,18 @@ from .util import json_pp
 from .device import Device
 from .errors import UnauthorizedError, ForbiddenError
 
-class Client(object):
+
+class Client:
     def __init__(self, api_key: str, websession: ClientSession, **kwargs) -> None:
-        self._log: logging.Logger = LOGGER; 
+        self._log: logging.Logger = LOGGER
 
         if kwargs.get("debug") is True:
             self._log.setLevel(logging.DEBUG)
             self._log.debug("Debug mode is explicitly enabled.")
         else:
-            self._log.debug("Debug mode is not explicitly enabled (but may be enabled elsewhere).")
+            self._log.debug(
+                "Debug mode is not explicitly enabled (but may be enabled elsewhere)."
+            )
 
         self._app_version: int = APP_VERSION
         self._api_key: str = api_key
@@ -39,7 +41,7 @@ class Client(object):
         self._api.set_bearer_token(self._access_token)
 
     async def setup_devices(self) -> None:
-        try: 
+        try:
             device_list: dict = await self._api.get_device_list()
         except UnauthorizedError:
             self._log.debug(
@@ -65,8 +67,10 @@ class Client(object):
                 self._devices[serial_number] = Device(device)
 
     async def get_latest_data(self, serial_number: str) -> None:
-        try: 
-            data_latest: dict = await self._api.get_device_data(serial_number, self._mode, self._limit)
+        try:
+            data_latest: dict = await self._api.get_device_data(
+                serial_number, self._mode, self._limit
+            )
         except UnauthorizedError:
             self._log.debug(
                 "\033[93m"
@@ -74,7 +78,9 @@ class Client(object):
                 + "\033[0m"
             )
             await self.login()
-            data_latest = await self._api.get_device_data(serial_number, self._mode, self._limit)
+            data_latest = await self._api.get_device_data(
+                serial_number, self._mode, self._limit
+            )
         except ForbiddenError:
             self._log.debug(
                 "\033[93m"
@@ -82,14 +88,18 @@ class Client(object):
                 + "\033[0m"
             )
             await self.login()
-            data_latest = await self._api.get_device_data(serial_number, self._mode, self._limit)
+            data_latest = await self._api.get_device_data(
+                serial_number, self._mode, self._limit
+            )
 
         if serial_number not in self._devices:
-            LOGGER.error(f"[client get_latest_data], no serial number saved to setup devices")
+            LOGGER.error(
+                "[client get_latest_data], no serial number saved to setup devices"
+            )
 
         data: list = data_latest["data"]
         device_obj: Device = self._devices[serial_number]
         device_obj.update_data(data)
-            
+
     def get_devices(self) -> Dict[str, Device]:
         return self._devices

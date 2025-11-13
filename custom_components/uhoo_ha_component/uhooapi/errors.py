@@ -1,5 +1,6 @@
 """Define package errors."""
 
+
 class UhooError(Exception):
     """Base class for all Uhoo-related errors."""
 

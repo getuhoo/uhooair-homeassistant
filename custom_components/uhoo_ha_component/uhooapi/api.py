@@ -3,27 +3,20 @@ from aiohttp import ClientSession, ClientResponseError, ClientError
 from aiohttp.hdrs import AUTHORIZATION
 from typing import Optional
 from ..const import LOGGER
-from .endpoints import (
-    API_URL_BASE, 
-    GENERATE_TOKEN,
-    DEVICE_DATA,
-    DEVICE_LIST
-)
-from .errors import (
-    UnauthorizedError,
-    ForbiddenError,
-    RequestError
-)
+from .endpoints import API_URL_BASE, GENERATE_TOKEN, DEVICE_DATA, DEVICE_LIST
+from .errors import UnauthorizedError, ForbiddenError, RequestError
 from .util import json_pp
 
 
-class API(object):
+class API:
     def __init__(self, websession: ClientSession):
         self._log: logging.Logger = LOGGER
         self._websession: ClientSession = websession
         self._bearer_token: Optional[str] = None
 
-    async def _request(self, method: str, scaffold: str, endpoint: str, data: Optional[dict] = None):
+    async def _request(
+        self, method: str, scaffold: str, endpoint: str, data: Optional[dict] = None
+    ):
         headers = {}
         if self._bearer_token:
             headers.update({AUTHORIZATION: f"Bearer {self._bearer_token}"})
@@ -50,10 +43,14 @@ class API(object):
                 return json
             except ClientResponseError as err:
                 if err.status == 401:
-                    self._log.debug(f"[_request] 401 Unauthorized:\n{json_pp(json) or text}")
+                    self._log.debug(
+                        f"[_request] 401 Unauthorized:\n{json_pp(json) or text}"
+                    )
                     raise UnauthorizedError(json_pp(json)) from None
                 elif err.status == 403:
-                    self._log.debug(f"[_request] 403 Unauthorized:\n{text or json_pp(json)}")
+                    self._log.debug(
+                        f"[_request] 403 Unauthorized:\n{text or json_pp(json)}"
+                    )
                     raise ForbiddenError(text or json) from None
                 else:
                     raise RequestError(
@@ -69,10 +66,7 @@ class API(object):
 
     async def generate_token(self, api_key: str) -> dict:
         resp: dict = await self._request(
-            "post", 
-            API_URL_BASE, 
-            GENERATE_TOKEN,
-            data={"code": api_key}
+            "post", API_URL_BASE, GENERATE_TOKEN, data={"code": api_key}
         )
         return resp
 
@@ -81,11 +75,10 @@ class API(object):
             "post",
             API_URL_BASE,
             DEVICE_DATA,
-            data={"serialNumber": serial_number, "mode": mode, "limit": limit}
+            data={"serialNumber": serial_number, "mode": mode, "limit": limit},
         )
         return resp
 
     async def get_device_list(self) -> list:
         resp: list = await self._request("get", API_URL_BASE, DEVICE_LIST)
         return resp
-        

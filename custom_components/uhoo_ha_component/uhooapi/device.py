@@ -1,18 +1,27 @@
-import json
-from ..const import LOGGER
-
-class Device(object):
+class Device:
     SENSOR_FIELDS = [
-        "virusIndex", 
-        "moldIndex", 
-        "temperature", 
+        "virusIndex",
+        "moldIndex",
+        "temperature",
         "humidity",
-        "pm25", "tvoc", "co2", 
-        "co", "airPressure", "ozone", 
-        "no2", "pm1", "pm4", 
-        "pm10", "ch2o", "light", 
-        "sound", "h2s", "no",
-        "so2", "nh3", "oxygen"
+        "pm25",
+        "tvoc",
+        "co2",
+        "co",
+        "airPressure",
+        "ozone",
+        "no2",
+        "pm1",
+        "pm4",
+        "pm10",
+        "ch2o",
+        "light",
+        "sound",
+        "h2s",
+        "no",
+        "so2",
+        "nh3",
+        "oxygen",
     ]
 
     def __init__(self, device: dict):
@@ -36,7 +45,8 @@ class Device(object):
     def _to_attr_name(self, key: str) -> str:
         """Convert JSON-style keys to Python attributes (camelCase → snake_case)."""
         import re
-        return re.sub(r'(?<!^)(?=[A-Z])', '_', key).lower()
+
+        return re.sub(r"(?<!^)(?=[A-Z])", "_", key).lower()
 
     def update_device(self, device: dict) -> None:
         self.device_name = device.get("deviceName", "")

@@ -4,7 +4,7 @@ from homeassistant.helpers.typing import ConfigType
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import (
-    DOMAIN, 
+    DOMAIN,
     SENSOR_TYPES,
     ATTR_LABEL,
     ATTR_ICON,
@@ -13,12 +13,17 @@ from .const import (
     ATTR_UNIQUE_ID,
     API_TEMP,
     MODEL,
-    UnitOfTemperature
+    UnitOfTemperature,
 )
 from . import UhooDataUpdateCoordinator
 from .uhooapi.device import Device
 
-async def async_setup_entry(hass: core.HomeAssistant, config_entry: ConfigType, async_add_entities: AddEntitiesCallback):
+
+async def async_setup_entry(
+    hass: core.HomeAssistant,
+    config_entry: ConfigType,
+    async_add_entities: AddEntitiesCallback,
+):
     """Setup sensor platform"""
     coordinator = hass.data[DOMAIN][config_entry.entry_id]
     sensors = []
@@ -28,8 +33,11 @@ async def async_setup_entry(hass: core.HomeAssistant, config_entry: ConfigType, 
 
     async_add_entities(sensors, False)
 
+
 class UhooSensorEntity(CoordinatorEntity, SensorEntity):
-    def __init__(self, kind: str, serial_number: str, coordinator: UhooDataUpdateCoordinator):
+    def __init__(
+        self, kind: str, serial_number: str, coordinator: UhooDataUpdateCoordinator
+    ):
         super().__init__(coordinator)
         self._coordinator = coordinator
         self._kind = kind
