@@ -11,6 +11,7 @@ from .const import (
     MANUFACTURER,
     ATTR_UNIT_OF_MEASUREMENT,
     ATTR_UNIQUE_ID,
+    ATTR_DEVICE_CLASS,
     API_TEMP,
     MODEL,
     UnitOfTemperature,
@@ -47,7 +48,7 @@ class UhooSensorEntity(CoordinatorEntity, SensorEntity):
     def name(self):
         """Return the name of the particular component."""
         device: Device = self.coordinator.data[self._serial_number]
-        return f"{device.device_name} {SENSOR_TYPES[self._kind][ATTR_LABEL]}"
+        return f"{device.device_name}_{SENSOR_TYPES[self._kind][ATTR_LABEL]}"
 
     @property
     def unique_id(self):
@@ -77,6 +78,10 @@ class UhooSensorEntity(CoordinatorEntity, SensorEntity):
     def state_class(self) -> str:
         """Return the state class of this entity, from STATE_CLASSES, if any."""
         return str(SensorStateClass.MEASUREMENT)
+
+    @property
+    def device_class(self) -> str:
+        return SENSOR_TYPES[self._kind][ATTR_DEVICE_CLASS]
 
     @property
     def icon(self) -> str:

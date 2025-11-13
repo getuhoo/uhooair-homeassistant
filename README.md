@@ -16,8 +16,6 @@ This integration is for uHoo home accounts.
 
 ![uHoo device view](dashboard.png)
 
-This is based on existing implementations like https://github.com/csacca/uhoo-homeassistant and https://github.com/andrewleech/uhoo-homeassistant.
-
 ## Installation
 
 ### HACS

@@ -13,7 +13,6 @@ async def setup_uhoo_config(hass: HomeAssistant):
 
     config_entry = MockConfigEntry(
         domain=DOMAIN,
-        entry_id="1",
         data=MOCK_CONFIG,
     )
     config_entry.add_to_hass(hass)
