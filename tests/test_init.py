@@ -2,7 +2,10 @@
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.uhoo_ha_component import UhooDataUpdateCoordinator, async_setup_entry
+from custom_components.uhoo_ha_component import (
+    UhooDataUpdateCoordinator,
+    async_setup_entry,
+)
 from custom_components.uhoo_ha_component.const import DOMAIN
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.setup import async_setup_component
@@ -34,7 +37,7 @@ async def test_async_setup_entry(
 
     assert config_entry.state is ConfigEntryState.LOADED
     assert DOMAIN in hass.data and config_entry.entry_id in hass.data[DOMAIN]
-    assert type(hass.data[DOMAIN][config_entry.entry_id]) == UhooDataUpdateCoordinator
+    assert type(hass.data[DOMAIN][config_entry.entry_id]) is UhooDataUpdateCoordinator
 
 
 async def test_async_setup_entry_exception(hass, error_on_login):

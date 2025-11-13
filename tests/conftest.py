@@ -24,15 +24,18 @@ def auto_enable_custom_integrations(enable_custom_integrations):
 @pytest.fixture(name="skip_notifications", autouse=True)
 def skip_notifications_fixture():
     """Skip notification calls."""
-    with patch("homeassistant.components.persistent_notification.async_create"), patch(
-        "homeassistant.components.persistent_notification.async_dismiss"
+    with (
+        patch("homeassistant.components.persistent_notification.async_create"),
+        patch("homeassistant.components.persistent_notification.async_dismiss"),
     ):
         yield
 
 
 @pytest.fixture(name="bypass_async_setup_entry")
 def bypass_async_setup_entry_fixture():
-    with patch("custom_components.uhoo_ha_component.async_setup_entry", return_value=True):
+    with patch(
+        "custom_components.uhoo_ha_component.async_setup_entry", return_value=True
+    ):
         yield
 
 
@@ -48,6 +51,7 @@ def bypass_login_fixture():
     with patch("custom_components.uhoo_ha_component.Client.login"):
         yield
 
+
 @pytest.fixture(name="bypass_setup_devices")
 def bypass_setup_devices_fixture():
     with patch("custom_components.uhoo_ha_component.Client.setup_devices"):
@@ -56,7 +60,10 @@ def bypass_setup_devices_fixture():
 
 @pytest.fixture(name="error_on_login")
 def error_login_fixture():
-    with patch("custom_components.uhoo_ha_component.Client.login", side_effect=UnauthorizedError):
+    with patch(
+        "custom_components.uhoo_ha_component.Client.login",
+        side_effect=UnauthorizedError,
+    ):
         yield
 
 
@@ -69,5 +76,7 @@ def bypass_get_lastest_data_fixture():
 @pytest.fixture(name="bypass_get_devices")
 def bypass_get_devices_fixture(mock_device):
     devices = {mock_device.serial_number: mock_device}
-    with patch("custom_components.uhoo_ha_component.Client.get_devices", return_value=devices):
+    with patch(
+        "custom_components.uhoo_ha_component.Client.get_devices", return_value=devices
+    ):
         yield

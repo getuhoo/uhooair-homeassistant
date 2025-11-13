@@ -22,11 +22,11 @@ This is based on https://github.com/csacca/uhoo-homeassistant, updated for curre
 
 ### HACS
 
-Add `https://github.com/andrewleech/uhoo-homeassistant` as a custom integration repository and install the uHoo integration.
+Add `https://github.com/getuhoo/uhooair-homeassistant` as a custom integration repository and install the uHoo integration.
 
 ### Manual
 
-Clone or download this repository, and copy the `custom_components/uhoo` directory into the `config/custom_components` directory of your Home Assistant instance. Restart Home Assistant.
+Clone or download this repository, and copy the `custom_components/uhoo_ha_component` directory into the `config/custom_components` directory of your Home Assistant instance. Restart Home Assistant.
 
 ## Configuration
 
@@ -34,35 +34,39 @@ Once installed, the uHoo integration is configured via the Home Assistant UI:
 
 **Configuration** -> **Integrations** -> **Add** -> **uHoo (HACS)**
 
-When prompted, enter your uHoo username (email address) and password.
+When prompted, enter your uHoo generated (API_KEY)
 
-![uHoo Configuration](uhoo-configuration-view.png)
+![uHoo Configuration](config.png)
 
 ## Setting up development environment
-
-This project is fully manage using the [Poetry][poetry] dependency manager.
 
 You need at least:
 
 - Python 3.14+
-- [Poetry][poetry-install]
+
+First pull the repository and go inside the directory and create your own python virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
 To install all packages, including development dependencies:
 
 ```bash
-poetry install
+pip install -r requirements.test.txt
 ```
 
 This repository uses the [pre-commit][pre-commit] framework and all changes are formatted and linted prior to each commit. To run the checks manually:
 
 ```bash
-poetry run pre-commit run --all-files
+pre-commit run --all-files
 ```
 
 To run all project tests:
 
 ```bash
-poetry run pytest
+pytest
 ```
 <!-- https://github.com/getuhoo/uhooair-homeassistant -->
 
@@ -72,10 +76,8 @@ poetry run pytest
 [hacs]: https://hacs.xyz/
 [license-shield]: https://img.shields.io/github/license/getuhoo/uhooair-homeassistant.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2025
-[pre-commit-ci-shield]: https://results.pre-commit.ci/badge/github/andrewleech/uhoo-homeassistant/master.svg
-[pre-commit-ci]: https://results.pre-commit.ci/latest/github/andrewleech/uhoo-homeassistant/master
-[poetry-install]: https://python-poetry.org/docs/#installation
-[poetry]: https://python-poetry.org
+[pre-commit-ci-shield]: https://results.pre-commit.ci/badge/github/getuhoo/uhooair-homeassistant/main.svg
+[pre-commit-ci]: https://results.pre-commit.ci/latest/github/getuhoo/uhooair-homeassistant/main
 [pre-commit]: https://pre-commit.com/
-[releases-shield]: https://img.shields.io/github/release/andrewleech/uhoo-homeassistant.svg
-[releases]: https://github.com/andrewleech/uhoo-homeassistant/releases
+[releases-shield]: https://img.shields.io/github/v/release/getuhoo/uhooair-homeassistant
+[releases]: https://github.com/getuhoo/uhooair-homeassistant/releases

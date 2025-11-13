@@ -1,10 +1,11 @@
 """Constants for uhoo tests."""
+
 from typing import Any, Dict
 
 from homeassistant.const import CONF_API_KEY
 
 # Mock config data to be used across multiple tests
-MOCK_CONFIG: dict = { CONF_API_KEY: "tes1232421232" }
+MOCK_CONFIG: dict = {CONF_API_KEY: "tes1232421232"}
 
 MOCK_DEVICE: Dict[str, Any] = {
     "deviceName": "Office Room",
@@ -14,7 +15,7 @@ MOCK_DEVICE: Dict[str, Any] = {
     "roomName": "Living Room",
     "timezone": "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi",
     "utcOffset": "+05:30",
-    "ssid": "ssidsample"
+    "ssid": "ssidsample",
 }
 
 MOCK_DEVICE_DATA = [
@@ -30,7 +31,7 @@ MOCK_DEVICE_DATA = [
         "airPressure": 1008.2,
         "ozone": 5,
         "no2": 0,
-        "timestamp": 1762946521
+        "timestamp": 1762946521,
     },
     {
         "virusIndex": 3,
@@ -44,7 +45,7 @@ MOCK_DEVICE_DATA = [
         "airPressure": 1008.2,
         "ozone": 5,
         "no2": 1,
-        "timestamp": 1762946581
+        "timestamp": 1762946581,
     },
     {
         "virusIndex": 3,
@@ -58,7 +59,7 @@ MOCK_DEVICE_DATA = [
         "airPressure": 1008.2,
         "ozone": 5,
         "no2": 1,
-        "timestamp": 1762946641
+        "timestamp": 1762946641,
     },
     {
         "virusIndex": 3,
@@ -72,7 +73,7 @@ MOCK_DEVICE_DATA = [
         "airPressure": 1008.2,
         "ozone": 5,
         "no2": 0,
-        "timestamp": 1762946701
+        "timestamp": 1762946701,
     },
     {
         "virusIndex": 3,
@@ -86,6 +87,6 @@ MOCK_DEVICE_DATA = [
         "airPressure": 1008.3,
         "ozone": 5,
         "no2": 0,
-        "timestamp": 1762946761
-    }
+        "timestamp": 1762946761,
+    },
 ]
