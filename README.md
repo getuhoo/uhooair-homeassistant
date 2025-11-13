@@ -44,7 +44,7 @@ This project is fully manage using the [Poetry][poetry] dependency manager.
 
 You need at least:
 
-- Python 3.8+
+- Python 3.14+
 - [Poetry][poetry-install]
 
 To install all packages, including development dependencies:
@@ -64,13 +64,14 @@ To run all project tests:
 ```bash
 poetry run pytest
 ```
+<!-- https://github.com/getuhoo/uhooair-homeassistant -->
 
-[build-shield]: https://github.com/andrewleech/uhoo-homeassistant/actions/workflows/ci.yaml/badge.svg
-[build]: https://github.com/andrewleech/uhoo-homeassistant/actions/workflows/ci.yaml
+[build-shield]: https://github.com/getuhoo/uhooair-homeassistant/actions/workflows/pythonpackage.yaml/badge.svg
+[build]: https://github.com/getuhoo/uhooair-homeassistant/actions/workflows/pythonpackage.yaml
 [hacs-shield]: https://img.shields.io/badge/HACS-Custom-orange.svg
 [hacs]: https://hacs.xyz/
-[license-shield]: https://img.shields.io/github/license/andrewleech/uhoo-homeassistant.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
+[license-shield]: https://img.shields.io/github/license/getuhoo/uhooair-homeassistant.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2025
 [pre-commit-ci-shield]: https://results.pre-commit.ci/badge/github/andrewleech/uhoo-homeassistant/master.svg
 [pre-commit-ci]: https://results.pre-commit.ci/latest/github/andrewleech/uhoo-homeassistant/master
 [poetry-install]: https://python-poetry.org/docs/#installation
