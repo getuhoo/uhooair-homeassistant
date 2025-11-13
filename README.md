@@ -14,7 +14,7 @@ Integrates support for the [uHoo](https://getuhoo.com/) air quality monitor into
 
 This integration has been tested with the uHoo home device. It might work with the business uHoo Aura device but that is untested.
 
-![uHoo device view](uhoo-device-view.png)
+![uHoo device view](dashboard.png)
 
 This is based on https://github.com/csacca/uhoo-homeassistant, updated for current compatibility.
 
