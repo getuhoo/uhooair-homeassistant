@@ -47,8 +47,8 @@ class UhooSensorEntity(CoordinatorEntity, SensorEntity):
     @property
     def name(self):
         """Return the name of the particular component."""
-        # device: Device = self.coordinator.data[self._serial_number]
-        return f"{SENSOR_TYPES[self._kind][ATTR_LABEL]}"
+        device: Device = self.coordinator.data[self._serial_number]
+        return f"{device.device_name} {SENSOR_TYPES[self._kind][ATTR_LABEL]}"
 
     @property
     def unique_id(self):
