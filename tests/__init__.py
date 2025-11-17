@@ -2,7 +2,7 @@
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.uhoo_ha_component.const import DOMAIN
+from custom_components.uhooair.const import DOMAIN
 from homeassistant.core import HomeAssistant
 
 from .const import MOCK_CONFIG

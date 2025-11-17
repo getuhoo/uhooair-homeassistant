@@ -2,11 +2,11 @@
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.uhoo_ha_component import (
+from custom_components.uhooair import (
     UhooDataUpdateCoordinator,
     async_setup_entry,
 )
-from custom_components.uhoo_ha_component.const import DOMAIN
+from custom_components.uhooair.const import DOMAIN
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.setup import async_setup_component
 

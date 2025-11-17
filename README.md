@@ -24,7 +24,7 @@ Add `https://github.com/getuhoo/uhooair-homeassistant` as a custom integration r
 
 ### Manual
 
-Clone or download this repository, and copy the `custom_components/uhoo_ha_component` directory into the `config/custom_components` directory of your Home Assistant instance. Restart Home Assistant.
+Clone or download this repository, and copy the `custom_components/uhooair` directory into the `config/custom_components` directory of your Home Assistant instance. Restart Home Assistant.
 
 ## Configuration
 

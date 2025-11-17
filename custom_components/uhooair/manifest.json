@@ -1,6 +1,6 @@
 {
-  "domain": "uhoo_ha_component",
-  "name": "uhoo_ha_component",
+  "domain": "uhooair",
+  "name": "uhooair",
   "codeowners": [
     "@joshsmonta"
   ],

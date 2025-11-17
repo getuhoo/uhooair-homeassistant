@@ -15,7 +15,7 @@ from homeassistant.components.sensor import (
     SensorDeviceClass,
 )
 
-DOMAIN = "uhoo_ha_component"
+DOMAIN = "uhooair"
 LOGGER = logging.getLogger(__package__)
 APP_VERSION: int = 1
 

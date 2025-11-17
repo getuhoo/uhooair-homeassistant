@@ -1,5 +1,5 @@
 from pytest_homeassistant_custom_component.common import MockConfigEntry
-from custom_components.uhoo_ha_component.const import DOMAIN
+from custom_components.uhooair.const import DOMAIN
 from homeassistant.data_entry_flow import FlowResultType
 from homeassistant.config_entries import SOURCE_USER
 from homeassistant.const import CONF_API_KEY

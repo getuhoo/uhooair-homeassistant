@@ -3,8 +3,8 @@
 from unittest.mock import patch
 
 import pytest
-from custom_components.uhoo_ha_component.uhooapi.device import Device
-from custom_components.uhoo_ha_component.uhooapi.errors import UnauthorizedError
+from custom_components.uhooair.uhooapi.device import Device
+from custom_components.uhooair.uhooapi.errors import UnauthorizedError
 
 from .const import MOCK_DEVICE, MOCK_DEVICE_DATA
 
@@ -33,9 +33,7 @@ def skip_notifications_fixture():
 
 @pytest.fixture(name="bypass_async_setup_entry")
 def bypass_async_setup_entry_fixture():
-    with patch(
-        "custom_components.uhoo_ha_component.async_setup_entry", return_value=True
-    ):
+    with patch("custom_components.uhooair.async_setup_entry", return_value=True):
         yield
 
 
@@ -48,20 +46,20 @@ def mock_device_fixture() -> Device:
 
 @pytest.fixture(name="bypass_login")
 def bypass_login_fixture():
-    with patch("custom_components.uhoo_ha_component.Client.login"):
+    with patch("custom_components.uhooair.Client.login"):
         yield
 
 
 @pytest.fixture(name="bypass_setup_devices")
 def bypass_setup_devices_fixture():
-    with patch("custom_components.uhoo_ha_component.Client.setup_devices"):
+    with patch("custom_components.uhooair.Client.setup_devices"):
         yield
 
 
 @pytest.fixture(name="error_on_login")
 def error_login_fixture():
     with patch(
-        "custom_components.uhoo_ha_component.Client.login",
+        "custom_components.uhooair.Client.login",
         side_effect=UnauthorizedError,
     ):
         yield
@@ -69,14 +67,12 @@ def error_login_fixture():
 
 @pytest.fixture(name="bypass_get_latest_data")
 def bypass_get_lastest_data_fixture():
-    with patch("custom_components.uhoo_ha_component.Client.get_latest_data"):
+    with patch("custom_components.uhooair.Client.get_latest_data"):
         yield
 
 
 @pytest.fixture(name="bypass_get_devices")
 def bypass_get_devices_fixture(mock_device):
     devices = {mock_device.serial_number: mock_device}
-    with patch(
-        "custom_components.uhoo_ha_component.Client.get_devices", return_value=devices
-    ):
+    with patch("custom_components.uhooair.Client.get_devices", return_value=devices):
         yield

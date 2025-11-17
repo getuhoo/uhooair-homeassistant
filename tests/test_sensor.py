@@ -1,7 +1,7 @@
 from datetime import timedelta
 from unittest.mock import patch
 from pytest_homeassistant_custom_component.common import async_fire_time_changed
-from custom_components.uhoo_ha_component.const import (  # noqa:F401
+from custom_components.uhooair.const import (  # noqa:F401
     API_CO,
     API_CO2,
     API_PM25,
@@ -134,7 +134,7 @@ async def test_availability(
     assert state.state == "67.6"
 
     with patch(
-        "custom_components.uhoo_ha_component.Client.get_latest_data",
+        "custom_components.uhooair.Client.get_latest_data",
         side_effect=ConnectionError(),
     ):
         future = utcnow() + timedelta(minutes=60)
