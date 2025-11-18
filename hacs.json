@@ -1,4 +1,6 @@
 {
-  "name": "uhoo-ha-component",
+  "name": "uHoo",
+  "hacs": "2.0.5",
+  "homeassistant": "2024.7.0",
   "render_readme": true
 }

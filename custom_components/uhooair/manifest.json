@@ -2,7 +2,8 @@
   "domain": "uhooair",
   "name": "uhooair",
   "codeowners": [
-    "@joshsmonta"
+    "@joshsmonta",
+    "@uhooair"
   ],
   "config_flow": true,
   "dependencies": [],
