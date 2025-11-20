@@ -24,7 +24,7 @@ NAME = "uHoo Integration"
 MODEL = "uHoo Indoor Air Monitor"
 MANUFACTURER = "uHoo, Inc."
 VERSION = "1.0.0"
-ISSUE_URL = "https://github.com/joshsmonta/uhoo-ha-component/issues"
+ISSUE_URL = "https://github.com/getuhoo/uhooair-homeassistant/issues"
 
 UPDATE_INTERVAL = timedelta(seconds=300)
 
