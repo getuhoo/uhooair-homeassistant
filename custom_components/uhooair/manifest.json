@@ -7,7 +7,8 @@
   ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/getuhoo/uhooair-homeassistant",
+  "documentation": "https://github.com/getuhoo/uhooair-homeassistant/blob/main/README.md",
+  "issue_tracker": "https://github.com/getuhoo/uhooair-homeassistant/issues",
   "iot_class": "cloud_polling",
   "requirements": [
     "aiohttp"
