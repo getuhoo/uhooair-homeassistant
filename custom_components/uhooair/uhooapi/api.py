@@ -80,5 +80,5 @@ class API:
         return resp
 
     async def get_device_list(self) -> list:
-        resp: list = await self._request("get", API_URL_BASE, DEVICE_LIST)
+        resp: list = await self._request("post", API_URL_BASE, DEVICE_LIST)
         return resp
