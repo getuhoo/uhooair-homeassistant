@@ -1,18 +1,25 @@
 {
     "config": {
-        "step": {
-            "user": {
-                "title": "Enter Generated API KEY from uHoo Web App.",
-                "data": {
-                    "api_key": "API KEY"
-                }
-            }
+        "abort": {
+            "already_configured": "This uHoo account is already configured.",
+            "single_instance_allowed": "Only a single instance of uHoo is supported."
         },
         "error": {
-            "auth": "Invalid uHoo credentials provided."
+            "auth": "Invalid API key. Please check your credentials and try again.",
+            "cannot_connect": "Cannot connect to uHoo servers. Please check your internet connection and try again.",
+            "unknown": "An unknown error occurred. Please try again."
         },
-        "abort": {
-            "single_instance_allowed": "Only a single instance is allowed."
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "api key"
+                },
+                "data_description": {
+                    "api_key": "Your uHoo API key. You can find this in your uHoo account settings."
+                },
+                "description": "Enter your uHoo API key to connect.",
+                "title": "Connect to uHoo"
+            }
         }
     }
 }

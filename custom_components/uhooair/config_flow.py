@@ -1,6 +1,11 @@
 import voluptuous as vol
 from homeassistant.const import CONF_API_KEY
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
+from homeassistant.helpers.selector import (
+    TextSelector,
+    TextSelectorConfig,
+    TextSelectorType,
+)
 from homeassistant.config_entries import CONN_CLASS_CLOUD_POLL, ConfigFlow
 from .const import DOMAIN, LOGGER
 from typing import Any, Dict, Optional
@@ -15,7 +20,16 @@ class UhooFlowHandler(ConfigFlow, domain=DOMAIN):
     def __init__(self):
         """Initialize the config flow"""
         self._errors = {}
-        self.data_schema = vol.Schema({vol.Required(CONF_API_KEY): str})
+        self.data_schema = vol.Schema(
+            {
+                vol.Required(CONF_API_KEY): TextSelector(
+                    TextSelectorConfig(
+                        type=TextSelectorType.PASSWORD,  # This makes it a censored password field
+                        autocomplete="current-password",  # Helps browser password managers
+                    )
+                )
+            }
+        )
 
     async def async_step_user(self, user_input: Optional[Dict[str, Any]] = None):
         """Handle the start of the config flow."""
@@ -43,7 +57,16 @@ class UhooFlowHandler(ConfigFlow, domain=DOMAIN):
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema(
-                {vol.Required(CONF_API_KEY, default=user_input[CONF_API_KEY]): str}
+                {
+                    vol.Required(
+                        CONF_API_KEY, default=user_input[CONF_API_KEY]
+                    ): TextSelector(
+                        TextSelectorConfig(
+                            type=TextSelectorType.PASSWORD,  # This makes it a censored password field
+                            autocomplete="current-password",  # Helps browser password managers
+                        )
+                    )
+                }
             ),
             errors=self._errors,
         )
