@@ -22,7 +22,7 @@ APP_VERSION: int = 1
 # Base component constants
 NAME = "uHoo Integration"
 MODEL = "uHoo Indoor Air Monitor"
-MANUFACTURER = "uHoo, Inc."
+MANUFACTURER = "uHoo Pte. Ltd."
 VERSION = "1.0.0"
 ISSUE_URL = "https://github.com/getuhoo/uhooair-homeassistant/issues"
 
@@ -60,14 +60,14 @@ SENSOR_TYPES = {
         ATTR_DEVICE_CLASS: SensorDeviceClass.CO,
         ATTR_ICON: "mdi:molecule-co",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_MILLION,
-        ATTR_LABEL: "Carbon monoxide",
+        ATTR_LABEL: "Carbon Monoxide",
         ATTR_UNIQUE_ID: API_CO,
     },
     API_CO2: {
         ATTR_DEVICE_CLASS: SensorDeviceClass.CO2,
         ATTR_ICON: "mdi:molecule-co2",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_MILLION,
-        ATTR_LABEL: "Carbon dioxide",
+        ATTR_LABEL: "Carbon Dioxide",
         ATTR_UNIQUE_ID: API_CO2,
     },
     API_PM25: {
@@ -95,21 +95,21 @@ SENSOR_TYPES = {
         ATTR_DEVICE_CLASS: SensorDeviceClass.PRESSURE,
         ATTR_ICON: "mdi:gauge",
         ATTR_UNIT_OF_MEASUREMENT: UnitOfPressure.HPA,
-        ATTR_LABEL: "Air pressure",
+        ATTR_LABEL: "Air Pressure",
         ATTR_UNIQUE_ID: API_PRESSURE,
     },
     API_TVOC: {
         ATTR_DEVICE_CLASS: SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS,  # DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS once supported
         ATTR_ICON: "mdi:cloud",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Total volatile organic compounds",
+        ATTR_LABEL: "Total Volatile Organic Compounds",
         ATTR_UNIQUE_ID: API_TVOC,
     },
     API_NO2: {
         ATTR_DEVICE_CLASS: SensorDeviceClass.NITROGEN_DIOXIDE,  # DEVICE_CLASS_NITROGEN_DIOXIDE once supported
         ATTR_ICON: "mdi:cloud",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Nitrogen dioxide",
+        ATTR_LABEL: "Nitrogen Dioxide",
         ATTR_UNIQUE_ID: API_NO2,
     },
     API_OZONE: {
@@ -123,95 +123,15 @@ SENSOR_TYPES = {
         ATTR_DEVICE_CLASS: SensorDeviceClass.AQI,
         ATTR_ICON: "mdi:biohazard",
         ATTR_UNIT_OF_MEASUREMENT: "",
-        ATTR_LABEL: "Virus index",
+        ATTR_LABEL: "Virus Index",
         ATTR_UNIQUE_ID: API_VIRUS,
     },
     API_MOLD: {
         ATTR_DEVICE_CLASS: SensorDeviceClass.AQI,
         ATTR_ICON: "mdi:mushroom",
         ATTR_UNIT_OF_MEASUREMENT: "",
-        ATTR_LABEL: "Mold index",
+        ATTR_LABEL: "Mold Index",
         ATTR_UNIQUE_ID: API_MOLD,
-    },
-}
-
-AURA_SENSORS = {
-    API_CH2O: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:chemical-weapon",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Formaldehyde (CH2O)",
-        ATTR_UNIQUE_ID: API_CH2O,
-    },
-    API_LIGHT: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:brightness-5",
-        ATTR_UNIT_OF_MEASUREMENT: "lux",
-        ATTR_LABEL: "Light intensity",
-        ATTR_UNIQUE_ID: API_LIGHT,
-    },
-    API_SOUND: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:volume-high",
-        ATTR_UNIT_OF_MEASUREMENT: "dB",
-        ATTR_LABEL: "Sound level",
-        ATTR_UNIQUE_ID: API_SOUND,
-    },
-    API_H2S: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:chemical-weapon",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Hydrogen sulfide",
-        ATTR_UNIQUE_ID: API_H2S,
-    },
-    API_NO: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:cloud",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Nitric oxide",
-        ATTR_UNIQUE_ID: API_NO,
-    },
-    API_SO2: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:cloud",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Sulfur dioxide",
-        ATTR_UNIQUE_ID: API_SO2,
-    },
-    API_NH3: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:cloud",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_BILLION,
-        ATTR_LABEL: "Ammonia",
-        ATTR_UNIQUE_ID: API_NH3,
-    },
-    API_OXYGEN: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:gas-cylinder",
-        ATTR_UNIT_OF_MEASUREMENT: PERCENTAGE,
-        ATTR_LABEL: "Oxygen",
-        ATTR_UNIQUE_ID: API_OXYGEN,
-    },
-    API_PM1: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:blur",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-        ATTR_LABEL: "PM1.0",
-        ATTR_UNIQUE_ID: API_PM1,
-    },
-    API_PM4: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:blur",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-        ATTR_LABEL: "PM4.0",
-        ATTR_UNIQUE_ID: API_PM4,
-    },
-    API_PM10: {
-        ATTR_DEVICE_CLASS: None,
-        ATTR_ICON: "mdi:blur",
-        ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-        ATTR_LABEL: "PM10",
-        ATTR_UNIQUE_ID: API_PM10,
     },
 }
 
