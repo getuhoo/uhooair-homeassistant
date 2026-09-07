@@ -1,21 +1,6 @@
 from datetime import timedelta
 from unittest.mock import patch
-from pytest_homeassistant_custom_component.common import async_fire_time_changed
-from custom_components.uhooair.const import (  # noqa:F401
-    API_CO,
-    API_CO2,
-    API_PM25,
-    API_HUMIDITY,
-    API_TEMP,
-    API_PRESSURE,
-    API_TVOC,
-    API_NO2,
-    API_OZONE,
-    API_VIRUS,
-    API_MOLD,
-    ATTR_LABEL,
-    SENSOR_TYPES,
-)
+
 from homeassistant.components.sensor import ATTR_STATE_CLASS, SensorStateClass
 from homeassistant.const import (
     ATTR_DEVICE_CLASS,
@@ -27,6 +12,23 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry
 from homeassistant.helpers.entity_registry import EntityRegistry
 from homeassistant.util.dt import utcnow
+from pytest_homeassistant_custom_component.common import async_fire_time_changed
+
+from custom_components.uhooair.const import (
+    API_CO,
+    API_CO2,
+    API_HUMIDITY,
+    API_MOLD,
+    API_NO2,
+    API_OZONE,
+    API_PM25,
+    API_PRESSURE,
+    API_TEMP,
+    API_TVOC,
+    API_VIRUS,
+    ATTR_LABEL,
+    SENSOR_TYPES,
+)
 
 from . import setup_uhoo_config
 from .const import MOCK_DEVICE, MOCK_DEVICE_DATA
@@ -63,11 +65,9 @@ def assert_expected_properties(
     }
     assert state
     if sensor_type in ["air_pressure", "virus_index", "mold_index"]:
-        assert (
-            state.state == f"{str(float(MOCK_DEVICE_DATA[0][CAMEL_MAP[sensor_type]]))}"
-        )
+        assert state.state == f"{float(MOCK_DEVICE_DATA[0][CAMEL_MAP[sensor_type]])!s}"
     else:
-        assert state.state == f"{str(float(MOCK_DEVICE_DATA[0][sensor_type]))}"
+        assert state.state == f"{float(MOCK_DEVICE_DATA[0][sensor_type])!s}"
 
     # Attributes
     assert state.attributes.get(ATTR_STATE_CLASS) == SensorStateClass.MEASUREMENT
