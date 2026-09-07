@@ -1,4 +1,7 @@
+from typing import Any
+
 import voluptuous as vol
+from homeassistant.config_entries import CONN_CLASS_CLOUD_POLL, ConfigFlow
 from homeassistant.const import CONF_API_KEY
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.selector import (
@@ -6,9 +9,8 @@ from homeassistant.helpers.selector import (
     TextSelectorConfig,
     TextSelectorType,
 )
-from homeassistant.config_entries import CONN_CLASS_CLOUD_POLL, ConfigFlow
+
 from .const import DOMAIN, LOGGER
-from typing import Any, Dict, Optional
 from .uhooapi.client import Client
 from .uhooapi.errors import UnauthorizedError
 
@@ -31,7 +33,7 @@ class UhooFlowHandler(ConfigFlow, domain=DOMAIN):
             }
         )
 
-    async def async_step_user(self, user_input: Optional[Dict[str, Any]] = None):
+    async def async_step_user(self, user_input: dict[str, Any] | None = None):
         """Handle the start of the config flow."""
         self._errors = {}
 
@@ -53,7 +55,7 @@ class UhooFlowHandler(ConfigFlow, domain=DOMAIN):
             self._errors["base"] = "auth"
         return await self._show_config_form(user_input)
 
-    async def _show_config_form(self, user_input: Optional[Dict[str, Any]] = None):
+    async def _show_config_form(self, user_input: dict[str, Any] | None = None):
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema(

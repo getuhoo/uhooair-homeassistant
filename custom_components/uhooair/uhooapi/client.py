@@ -1,11 +1,12 @@
 import logging
+
 from aiohttp import ClientSession
-from typing import Dict, Optional
-from ..const import LOGGER, APP_VERSION
+
+from ..const import APP_VERSION, LOGGER
 from .api import API
-from .util import json_pp
 from .device import Device
-from .errors import UnauthorizedError, ForbiddenError
+from .errors import ForbiddenError, UnauthorizedError
+from .util import json_pp
 
 
 class Client:
@@ -22,14 +23,14 @@ class Client:
 
         self._app_version: int = APP_VERSION
         self._api_key: str = api_key
-        self._access_token: Optional[str] = None
-        self._refresh_token: Optional[str] = None
+        self._access_token: str | None = None
+        self._refresh_token: str | None = None
         self._websession: ClientSession = websession
-        self._mac_address: Optional[str] = None
-        self._serial_number: Optional[str] = None
+        self._mac_address: str | None = None
+        self._serial_number: str | None = None
         self._mode: str = "minute"
         self._limit: int = 5
-        self._devices: Dict[str, Device] = {}
+        self._devices: dict[str, Device] = {}
 
         self._api: API = API(self._websession)
 
@@ -101,5 +102,5 @@ class Client:
         device_obj: Device = self._devices[serial_number]
         device_obj.update_data(data)
 
-    def get_devices(self) -> Dict[str, Device]:
+    def get_devices(self) -> dict[str, Device]:
         return self._devices

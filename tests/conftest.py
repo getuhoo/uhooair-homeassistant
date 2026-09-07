@@ -3,6 +3,7 @@
 from unittest.mock import patch
 
 import pytest
+
 from custom_components.uhooair.uhooapi.device import Device
 from custom_components.uhooair.uhooapi.errors import UnauthorizedError
 
