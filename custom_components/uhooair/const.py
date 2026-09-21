@@ -1,5 +1,9 @@
 import logging
 from datetime import timedelta
+
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+)
 from homeassistant.const import (
     ATTR_DEVICE_CLASS,
     ATTR_ICON,
@@ -7,12 +11,9 @@ from homeassistant.const import (
     CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
     CONCENTRATION_PARTS_PER_BILLION,
     CONCENTRATION_PARTS_PER_MILLION,
+    PERCENTAGE,
     UnitOfPressure,
     UnitOfTemperature,
-    PERCENTAGE,
-)
-from homeassistant.components.sensor import (
-    SensorDeviceClass,
 )
 
 DOMAIN = "uhooair"
