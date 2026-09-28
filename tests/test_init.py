@@ -1,5 +1,7 @@
 """Test uHoo setup process."""
 
+from homeassistant.config_entries import ConfigEntryState
+from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.uhooair import (
@@ -7,8 +9,6 @@ from custom_components.uhooair import (
     async_setup_entry,
 )
 from custom_components.uhooair.const import DOMAIN
-from homeassistant.config_entries import ConfigEntryState
-from homeassistant.setup import async_setup_component
 
 from .const import MOCK_CONFIG
 

@@ -1,22 +1,23 @@
 from homeassistant import core
-from homeassistant.components.sensor import SensorStateClass, SensorEntity
-from homeassistant.helpers.typing import ConfigType
+from homeassistant.components.sensor import SensorEntity, SensorStateClass
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.typing import ConfigType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+
+from . import UhooDataUpdateCoordinator
 from .const import (
-    DOMAIN,
-    SENSOR_TYPES,
-    ATTR_LABEL,
-    ATTR_ICON,
-    MANUFACTURER,
-    ATTR_UNIT_OF_MEASUREMENT,
-    ATTR_UNIQUE_ID,
-    ATTR_DEVICE_CLASS,
     API_TEMP,
+    ATTR_DEVICE_CLASS,
+    ATTR_ICON,
+    ATTR_LABEL,
+    ATTR_UNIQUE_ID,
+    ATTR_UNIT_OF_MEASUREMENT,
+    DOMAIN,
+    MANUFACTURER,
     MODEL,
+    SENSOR_TYPES,
     UnitOfTemperature,
 )
-from . import UhooDataUpdateCoordinator
 from .uhooapi.device import Device
 
 

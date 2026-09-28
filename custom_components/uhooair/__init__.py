@@ -1,16 +1,17 @@
 import asyncio
 from typing import Dict, List
+
 from homeassistant import core
-from homeassistant.exceptions import ConfigEntryNotReady
-from homeassistant.const import CONF_API_KEY
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import CONF_API_KEY
+from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import DOMAIN, LOGGER, STARTUP_MESSAGE, UPDATE_INTERVAL, PLATFORMS
-from .uhooapi.errors import UnauthorizedError, UhooError
+from .const import DOMAIN, LOGGER, PLATFORMS, STARTUP_MESSAGE, UPDATE_INTERVAL
 from .uhooapi.client import Client
 from .uhooapi.device import Device
+from .uhooapi.errors import UhooError, UnauthorizedError
 
 
 async def async_setup(hass: core.HomeAssistant, config: dict) -> bool:
@@ -78,12 +79,12 @@ class UhooDataUpdateCoordinator(DataUpdateCoordinator):
 
     def __init__(self, hass: core.HomeAssistant, client: Client) -> None:
         self.client = client
-        self.platforms: List[str] = []
+        self.platforms: list[str] = []
         self.user_settings_temp = None
 
         super().__init__(hass, LOGGER, name=DOMAIN, update_interval=UPDATE_INTERVAL)
 
-    async def _async_update_data(self) -> Dict[str, Device]:
+    async def _async_update_data(self) -> dict[str, Device]:
         try:
             await self.client.login()
             if self.client._devices:

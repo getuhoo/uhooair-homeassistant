@@ -1,10 +1,11 @@
 import logging
-from aiohttp import ClientSession, ClientResponseError, ClientError
+
+from aiohttp import ClientError, ClientResponseError, ClientSession
 from aiohttp.hdrs import AUTHORIZATION
-from typing import Optional
+
 from ..const import LOGGER
-from .endpoints import API_URL_BASE, GENERATE_TOKEN, DEVICE_DATA, DEVICE_LIST
-from .errors import UnauthorizedError, ForbiddenError, RequestError
+from .endpoints import API_URL_BASE, DEVICE_DATA, DEVICE_LIST, GENERATE_TOKEN
+from .errors import ForbiddenError, RequestError, UnauthorizedError
 from .util import json_pp
 
 
@@ -12,10 +13,10 @@ class API:
     def __init__(self, websession: ClientSession):
         self._log: logging.Logger = LOGGER
         self._websession: ClientSession = websession
-        self._bearer_token: Optional[str] = None
+        self._bearer_token: str | None = None
 
     async def _request(
-        self, method: str, scaffold: str, endpoint: str, data: Optional[dict] = None
+        self, method: str, scaffold: str, endpoint: str, data: dict | None = None
     ):
         headers = {}
         if self._bearer_token:
@@ -61,7 +62,7 @@ class API:
                     f"Error requesting data from {scaffold}/{endpoint}: {err}"
                 ) from None
 
-    def set_bearer_token(self, bearer_token: Optional[str]) -> None:
+    def set_bearer_token(self, bearer_token: str | None) -> None:
         self._bearer_token = bearer_token
 
     async def generate_token(self, api_key: str) -> dict:
